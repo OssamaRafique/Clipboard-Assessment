@@ -14,7 +14,7 @@ exports.deterministicPartitionKey = (event) => {
   return typeof event.partitionKey === "string" &&
     event.partitionKey.length <= MAX_PARTITION_KEY_LENGTH
     ? event.partitionKey
-    : createHash(JSON.stringify(event)).substring(0, MAX_PARTITION_KEY_LENGTH);
+    : createHash(JSON.stringify(event));
 };
 
 exports.TRIVIAL_PARTITION_KEY = TRIVIAL_PARTITION_KEY;
