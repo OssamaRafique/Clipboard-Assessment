@@ -9,3 +9,16 @@ You've been asked to refactor the function `deterministicPartitionKey` in [`dpk.
 You will be graded on the exhaustiveness and quality of your unit tests, the depth of your refactor, and the level of insight into your thought process provided by the written explanation.
 
 ## Your Explanation Here
+
+This module exports a function deterministicPartitionKey which takes an event object as an input and returns a deterministic partition key. The partition key is used to determine the storage partition for an event.
+
+### Changes Made
+
+- Moved the definition of the trivial partition key and the maximum partition key length to the top of the file as constants, making them more prominent and easy to change if needed.
+- Created a separate function createHash to handle the creation of the hash, making the code more modular and easier to understand.
+- In the refactored code, removed the candidate variable and instead returned the partition key directly if it's a valid string and its length is less than the maximum allowed.
+- Removed the unnecessary type check for candidate being a string, as it is guaranteed to be a string after being passed through the createHash function.
+- Added a substring method to the createHash function to make sure the returned value does not exceed the maximum length
+- Removed unnecessary if-else statements, so that the flow of the function is more linear and easier to follow.
+
+Overall, the refactored code is more readable and easier to understand than the original. The use of constants and a separate function for creating the hash make the code more modular, and the removal of unnecessary variable and type check make the code more concise and straightforward. The substring method added to the createHash function also ensures that the returned value does not exceed the maximum length.
